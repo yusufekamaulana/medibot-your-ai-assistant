@@ -31,7 +31,7 @@ import { useUser } from "@/hooks/useUser"
 export function NavUser() {
   const { isMobile } = useSidebar()
   const router = useRouter()
-  const { userr, loading } = useUser()
+  // const { userr, loading } = useUser()
 
   const user = {
     name: "Dummy User",
@@ -43,7 +43,7 @@ export function NavUser() {
     router.push("/login")
   }
 
-  if (loading || !user) return null
+  // if (loading || !user) return null
 
   return (
     <SidebarMenu>
