@@ -31,19 +31,19 @@ import { useUser } from "@/hooks/useUser"
 export function NavUser() {
   const { isMobile } = useSidebar()
   const router = useRouter()
-  // const { userr, loading } = useUser()
+  const { user, loading } = useUser()
 
-  const user = {
-    name: "Dummy User",
-    email: "dummy@example.com",
-    avatar: "DU",
-  }
+  // const user = {
+  //   name: "Dummy User",
+  //   email: "dummy@example.com",
+  //   avatar: "DU",
+  // }
   const handleLogout = () => {
     Cookies.remove("token")
     router.push("/login")
   }
 
-  // if (loading || !user) return null
+  if (loading || !user) return null
 
   return (
     <SidebarMenu>
