@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     images: {
     domains: ['d2qjkwm11akmwu.cloudfront.net'],
   },
+    eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

@@ -242,13 +242,20 @@ export default function DashboardPage() {
                   <InfoRow
                     label="Link"
                     value={
-                      <a
+                      // <a
+                      //   href={selectedObat["Link Obat"]}
+                      //   target="_blank"
+                      //   className="text-blue-600 underline break-words"
+                      // >
+                      //   Buka Halaman
+                      // </a>
+                      <Link
                         href={selectedObat["Link Obat"]}
                         target="_blank"
                         className="text-blue-600 underline break-words"
                       >
                         Buka Halaman
-                      </a>
+                      </Link>
                     }
                   />
                 </tbody>
