@@ -20,7 +20,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { usePathname } from "next/navigation"
-import { useUser } from "@/hooks/useUser"
 
 const user = {
   name: "shadcn",
@@ -56,7 +55,6 @@ const navMain = [
 ]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user, loading } = useUser()
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
