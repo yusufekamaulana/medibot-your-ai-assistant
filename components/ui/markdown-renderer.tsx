@@ -191,14 +191,14 @@ const COMPONENTS = {
 //   Component.displayName = Tag
 //   return Component
 // }
+import type * as JSX from "react/jsx-runtime"
 
 function withClass(Tag: keyof JSX.IntrinsicElements, classes: string) {
   const Component = ({ node, ...props }: any) => (
     <Tag className={classes} {...props} />
   )
-  Component.displayName = String(Tag) // ✅ convert ke string eksplisit
+  Component.displayName = String(Tag)
   return Component
 }
-
 
 export default MarkdownRenderer
