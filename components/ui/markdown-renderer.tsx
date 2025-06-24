@@ -3,7 +3,7 @@
 import React, { Suspense } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
-
+import { ElementType } from "react"
 import { cn } from "@/lib/utils"
 import { CopyButton } from "@/components/ui/copy-button"
 
@@ -134,17 +134,13 @@ function childrenTakeAllStringContents(element: any): string {
   return ""
 }
 
-function withClass<TagName extends keyof JSX.IntrinsicElements>(
-  Tag: TagName,
-  classes: string
-) {
+function withClass(Tag: ElementType, classes: string) {
   const Component = ({ node, ...props }: any) => (
     <Tag className={classes} {...props} />
   )
-  Component.displayName = Tag
+  Component.displayName = typeof Tag === "string" ? Tag : "CustomComponent"
   return Component
 }
-
 
 
 const COMPONENTS = {
