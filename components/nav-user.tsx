@@ -33,6 +33,11 @@ export function NavUser() {
   const router = useRouter()
   const { user, loading } = useUser()
 
+  const user = {
+    name: "Dummy User",
+    email: "dummy@example.com",
+    avatar: "DU",
+  }
   const handleLogout = () => {
     Cookies.remove("token")
     router.push("/login")
