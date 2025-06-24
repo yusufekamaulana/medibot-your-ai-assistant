@@ -14,29 +14,22 @@ export function useUser() {
 
   useEffect(() => {
     const token = Cookies.get("token")
-    console.log("Token from cookie:", token)
-
-    if (!token) {
-      setLoading(false)
-      return
-    }
+    console.log("Token:", token)
 
     fetchWithFallback("/auth/me", {
       headers: {
         Authorization: `Bearer ${token}`,
-      },
+        Accept: "application/json", // tambahkan ini
+      }
     })
-      .then((data: User) => {
-        console.log("Fetched user data:", data)
+      .then((data) => {
+        console.log("User fetched:", data)
         setUser(data)
       })
-      .catch((e) => {
-        console.error("Failed to fetch user", e)
-        setUser(null)
+      .catch((err) => {
+        console.error("User fetch failed:", err)
       })
-      .finally(() => {
-        setLoading(false)
-      })
+      .finally(() => setLoading(false))
   }, [])
 
   return { user, loading }
