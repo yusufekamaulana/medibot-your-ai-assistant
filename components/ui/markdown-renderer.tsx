@@ -134,13 +134,18 @@ function childrenTakeAllStringContents(element: any): string {
   return ""
 }
 
-function withClass(Tag: keyof React.ReactHTML, classes: string) {
+function withClass<TagName extends keyof JSX.IntrinsicElements>(
+  Tag: TagName,
+  classes: string
+) {
   const Component = ({ node, ...props }: any) => (
     <Tag className={classes} {...props} />
   )
   Component.displayName = Tag
   return Component
 }
+
+
 
 const COMPONENTS = {
   h1: withClass("h1", "text-2xl font-semibold"),
