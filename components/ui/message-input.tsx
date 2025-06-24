@@ -298,13 +298,13 @@ export function MessageInput({
 
       {props.allowAttachments && <FileUploadOverlay isDragging={isDragging} />}
 
-      <RecordingControls
+      {/* <RecordingControls
         isRecording={isRecording}
         isTranscribing={isTranscribing}
         audioStream={audioStream}
         textAreaHeight={textAreaHeight}
         onStopRecording={stopRecording}
-      />
+      /> */}
     </div>
   )
 }
@@ -427,38 +427,38 @@ interface RecordingControlsProps {
   onStopRecording: () => void
 }
 
-function RecordingControls({
-  isRecording,
-  isTranscribing,
-  audioStream,
-  textAreaHeight,
-  onStopRecording,
-}: RecordingControlsProps) {
-  if (isRecording) {
-    return (
-      <div
-        className="absolute inset-[1px] z-50 overflow-hidden rounded-xl"
-        style={{ height: textAreaHeight - 2 }}
-      >
-        <AudioVisualizer
-          stream={audioStream}
-          isRecording={isRecording}
-          onClick={onStopRecording}
-        />
-      </div>
-    )
-  }
+// function RecordingControls({
+//   isRecording,
+//   isTranscribing,
+//   audioStream,
+//   textAreaHeight,
+//   onStopRecording,
+// }: RecordingControlsProps) {
+//   if (isRecording) {
+//     return (
+//       <div
+//         className="absolute inset-[1px] z-50 overflow-hidden rounded-xl"
+//         style={{ height: textAreaHeight - 2 }}
+//       >
+//         <AudioVisualizer
+//           stream={audioStream}
+//           isRecording={isRecording}
+//           onClick={onStopRecording}
+//         />
+//       </div>
+//     )
+//   }
 
-  if (isTranscribing) {
-    return (
-      <div
-        className="absolute inset-[1px] z-50 overflow-hidden rounded-xl"
-        style={{ height: textAreaHeight - 2 }}
-      >
-        <TranscribingOverlay />
-      </div>
-    )
-  }
+//   if (isTranscribing) {
+//     return (
+//       <div
+//         className="absolute inset-[1px] z-50 overflow-hidden rounded-xl"
+//         style={{ height: textAreaHeight - 2 }}
+//       >
+//         <TranscribingOverlay />
+//       </div>
+//     )
+//   }
 
-  return null
-}
+//   return null
+// }
