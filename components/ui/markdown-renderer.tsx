@@ -1,4 +1,5 @@
-import type * as JSX from "react/jsx-runtime"
+"use client"
+
 import React, { Suspense } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -119,23 +120,26 @@ const CodeBlock = ({
 }
 
 function childrenTakeAllStringContents(element: any): string {
-  if (typeof element === "string") {
-    return element
-  }
+  if (typeof element === "string") return element
 
   if (element?.props?.children) {
-    let children = element.props.children
-
+    const children = element.props.children
     if (Array.isArray(children)) {
-      return children
-        .map((child) => childrenTakeAllStringContents(child))
-        .join("")
+      return children.map((child) => childrenTakeAllStringContents(child)).join("")
     } else {
       return childrenTakeAllStringContents(children)
     }
   }
 
   return ""
+}
+
+function withClass(Tag: keyof React.ReactHTML, classes: string) {
+  const Component = ({ node, ...props }: any) => (
+    <Tag className={classes} {...props} />
+  )
+  Component.displayName = Tag
+  return Component
 }
 
 const COMPONENTS = {
@@ -184,15 +188,5 @@ const COMPONENTS = {
   p: withClass("p", "whitespace-pre-wrap"),
   hr: withClass("hr", "border-foreground/20"),
 }
-
-// function withClass(Tag: keyof JSX.IntrinsicElements, classes: string) {
-//   const Component = ({ node, ...props }: any) => (
-//     <Tag className={classes} {...props} />
-//   )
-//   Component.displayName = Tag
-//   return Component
-// }
-
-function withClass(Tag: keyof React.ReactHTML, classes: string) {
 
 export default MarkdownRenderer
