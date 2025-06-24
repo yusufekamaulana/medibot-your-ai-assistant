@@ -1,6 +1,6 @@
 export const servers = [
-  "http://localhost:8000",
-  "http://192.168.113.185:8000",
+  // "http://localhost:8000",
+  "https://bc4d-210-57-216-168.ngrok-free.app",
 ]
 
 export const fetchWithFallback = async (

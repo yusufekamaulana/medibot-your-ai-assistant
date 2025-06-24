@@ -3,15 +3,11 @@
 import {
   ChevronsUpDown,
   LogOut,
-  User,
+  User as UserIcon,
 } from "lucide-react"
 import Cookies from "js-cookie"
 import { useRouter } from "next/navigation"
-
-import {
-  Avatar,
-  AvatarFallback,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,10 +24,22 @@ import {
 } from "@/components/ui/sidebar"
 import { useUser } from "@/hooks/useUser"
 
-export function NavUser() {
+interface User {
+  name: string
+  email: string
+  avatar: string
+}
+
+interface NavUserProps {
+  user?: User
+}
+
+export function NavUser({ user: userProp }: NavUserProps) {
   const { isMobile } = useSidebar()
   const router = useRouter()
-  const { user, loading } = useUser()
+  const { user: userFromHook, loading } = useUser()
+
+  const user = userProp ?? userFromHook
 
   const handleLogout = () => {
     Cookies.remove("token")
@@ -82,7 +90,7 @@ export function NavUser() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
+              <UserIcon className="mr-2 h-4 w-4" />
               Account
             </DropdownMenuItem>
             <DropdownMenuSeparator />
