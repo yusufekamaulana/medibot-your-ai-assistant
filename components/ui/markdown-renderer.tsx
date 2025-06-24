@@ -1,3 +1,4 @@
+import type * as JSX from "react/jsx-runtime"
 import React, { Suspense } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
@@ -191,14 +192,7 @@ const COMPONENTS = {
 //   Component.displayName = Tag
 //   return Component
 // }
-import type * as JSX from "react/jsx-runtime"
 
-function withClass(Tag: keyof JSX.IntrinsicElements, classes: string) {
-  const Component = ({ node, ...props }: any) => (
-    <Tag className={classes} {...props} />
-  )
-  Component.displayName = String(Tag)
-  return Component
-}
+function withClass(Tag: keyof React.ReactHTML, classes: string) {
 
 export default MarkdownRenderer
