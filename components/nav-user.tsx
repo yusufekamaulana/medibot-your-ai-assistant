@@ -31,7 +31,7 @@ import { useUser } from "@/hooks/useUser"
 export function NavUser() {
   const { isMobile } = useSidebar()
   const router = useRouter()
-  const { user, loading } = useUser()
+  const { userr, loading } = useUser()
 
   const user = {
     name: "Dummy User",
