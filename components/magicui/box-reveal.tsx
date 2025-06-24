@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, useAnimation, useInView } from "motion/react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react"; // ⬅️ Tambahkan ReactNode
 
 interface BoxRevealProps {
-  children: JSX.Element;
+  children: ReactNode; // ⬅️ Ubah ini
   width?: "fit-content" | "100%";
   boxColor?: string;
   duration?: number;
