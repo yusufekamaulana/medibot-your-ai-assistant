@@ -34,18 +34,6 @@ const navMain = [
     icon: Pill,
     items: undefined,
   },
-  // {
-  //   title: "Etalase Obat",
-  //   url: "/etalase",
-  //   icon: Pill,
-  //   items: undefined,
-  // },
-  // {
-  //   title: "Riwayat & Bookmark",
-  //   url: "/riwayat",
-  //   icon: History,
-  //   items: undefined,
-  // },
   {
     title: "Chatbot",
     url: "/chatbot",
@@ -64,7 +52,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={user} />
+        <NavUser/>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
